@@ -6,7 +6,11 @@ router.get("/", (req, res) => {
 });
 
 router.get("/profile", verifyToken, (req, res) => {
-  res.render("profile", { username: req.user.username, email: req.user.email });
+  if (verifyToken) {
+    res.render("profile", { user: req.user });
+  } else {
+    res.redirect("/");
+  }
 });
 
 module.exports = router;

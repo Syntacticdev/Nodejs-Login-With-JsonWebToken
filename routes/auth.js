@@ -16,10 +16,7 @@ const Users = [
     password: "123456",
   },
 ];
-router.get("/test", (req, res) => {
-  const { id } = Users;
-  console.log(Users[1].id);
-});
+
 router.get("/signup", (req, res) => {
   jwt.sign(user, process.env.JWT_PRIVATE_KEY, (err, token) => {
     if (err) throw err;
@@ -39,13 +36,6 @@ router.get("/decode", (req, res) => {
 
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
-
-  if (!username || !password) {
-    req.flash("error_msg", "All Input Fields is required");
-    res.redirect("/");
-    return false;
-  }
-
   const user = Users.find(
     (user) => user.username.toLowerCase() === username.toLowerCase()
   );
@@ -54,7 +44,6 @@ router.post("/login", (req, res) => {
     res.redirect("/");
     return false;
   }
-
   const isMatched = user.password === password;
   try {
     if (isMatched) {
@@ -72,15 +61,15 @@ router.post("/login", (req, res) => {
     } else {
       req.flash("error_msg", "Incorrect password");
       res.redirect("/");
-      // res.json({ message: "Incorrect password" });
     }
   } catch (error) {
     console.log(error);
   }
 });
+
 router.get("/logout", (req, res) => {
-  //res.cookie("jwt", "");
   res.clearCookie("jwt");
   res.redirect("/");
 });
+
 module.exports = router;
