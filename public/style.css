@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-boxs;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.login_label {
+  font-size: 40px;
+  color: rgb(135, 196, 236);
+  margin-bottom: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+label {
+  font-variant: small-caps;
+  color: rgb(135, 196, 236);
+}
+
+.form-group {
+  display: grid;
+}
+
+input {
+  padding: 5px;
+  margin: 10px 0;
+  border: 2px solid rgb(135, 196, 236);
+  border-radius: 10px;
+  outline: none;
+  width: 20em;
+}
+
+button {
+  width: 100%;
+  padding: 7px 0;
+  background-color: rgb(135, 196, 236);
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 10px;
+  outline: none;
+}
