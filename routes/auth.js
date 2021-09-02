@@ -46,7 +46,9 @@ router.post("/login", (req, res) => {
     return false;
   }
 
-  const user = Users.find((user) => user.username === username);
+  const user = Users.find(
+    (user) => user.username.toLowerCase() === username.toLowerCase()
+  );
   if (!user) {
     req.flash("error_msg", "Invalid account");
     res.redirect("/");
